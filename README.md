@@ -508,34 +508,6 @@ A non-native English speaker may intentionally use formal vocabulary, repeated s
 
 **Where implementation diverged:** the original idea treated the combined number as both AI likelihood and confidence. During implementation, I separated them. `ai_likelihood` indicates direction toward human-like or AI-like patterns, while `confidence` measures distance from the `0.5` uncertainty midpoint. This makes a human-like score such as `0.10` correctly appear high-confidence instead of low-confidence.
 
-## AI Usage
-
-### Instance 1 — Flask and Groq Skeleton
-
-I directed an AI tool to generate a minimal Flask structure and a standalone Groq signal based on my detection-signal specification and architecture. The initial output was revised so the model had to return strict JSON, scores were clamped to `0.0–1.0`, malformed fenced output could be parsed safely, and external failures became controlled `503` API responses instead of crashes.
-
-### Instance 2 — Stylometric Scoring Review
-
-I directed an AI tool to help translate the planned sentence variation, vocabulary diversity, and punctuation metrics into pure Python. I revised the result to reduce short-text overconfidence by pulling low-evidence stylometric scores toward `0.5`, and I kept the exact `65/35` combination from the written specification.
-
-### Instance 3 — Appeals and Audit Logging
-
-I directed an AI tool to draft the appeal flow. I revised it so the original signal scores remain preserved, duplicate under-review appeals return a conflict response, the status update is persisted, and the appeal is stored as a separate structured audit event.
-
-## Portfolio Walkthrough Checklist
-
-In a 2–3 minute video, show:
-
-1. `planning.md` architecture diagram
-2. the Flask server starting
-3. one `POST /submit` request
-4. the returned content ID, signal scores, AI likelihood, confidence, and label
-5. `GET /log`
-6. `POST /appeal` using the returned content ID
-7. `GET /log` showing `under_review`
-8. the rate-limit test reaching `429`
-9. one design decision: the conservative AI threshold because false positives can harm creators
-
 ## Project Structure
 
 ```text
