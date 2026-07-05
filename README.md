@@ -9,6 +9,8 @@ Provenance Guard is a Flask backend for creative-sharing platforms. It analyzes 
 
 > **Important:** this system estimates writing patterns. It does **not** prove who wrote a piece of content.
 
+--
+
 ## Features
 
 - `POST /submit` text attribution endpoint
@@ -24,6 +26,8 @@ Provenance Guard is a Flask backend for creative-sharing platforms. It analyzes 
 - `GET /log` evidence endpoint
 - `GET /health` service check
 - Pytest coverage for scoring, submission flow, appeals, logging, and rate limiting
+
+--
 
 ## Architecture Overview
 
